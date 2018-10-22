@@ -81,9 +81,10 @@ public class MainActivity extends AppCompatActivity {
 
                     Evento evento = new Evento(titulo,dia,hora,facilitador,descricao);
                     eventosList.add(evento);
-                    Toast.makeText(getApplicationContext(),"Evento Criado", Toast.LENGTH_SHORT).show());
+                    Toast.makeText(getApplicationContext(),"Evento Criado", Toast.LENGTH_SHORT).show();
+                    break;
             }
         }
     }
-}
+};
 
