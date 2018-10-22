@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView rclParticipantes;
     private RecyclerView rclEventos;
 
-    ArrayList<Evento> eventosList = new ArrayList<Evento>();
-    ArrayList<Participante> participantesList = new ArrayList<Participante>();
+    ArrayList<Evento> eventosList = new ArrayList<>();
+    ArrayList<Participante> participantesList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
