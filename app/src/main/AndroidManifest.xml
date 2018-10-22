@@ -16,6 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".CadastroParticipanteActivity" />
+        <activity android:name=".CadastroEventoActivity" />
+        <activity android:name=".DetalhesParticipanteActivity" />
+        <activity android:name=".DetalhesEventoActivity" />
+        <activity android:name=".EditaParticipanteActivity"></activity>
     </application>
 
 </manifest>
