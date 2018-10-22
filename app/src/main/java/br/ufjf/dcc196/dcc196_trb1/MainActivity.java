@@ -1,11 +1,15 @@
 package br.ufjf.dcc196.dcc196_trb1;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     public static final int REQUEST_PARTICIPANTE = 1;
@@ -18,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
     private Button btn_cadastro_evento;
     private RecyclerView rclParticipantes;
     private RecyclerView rclEventos;
+
+    ArrayList<Evento> eventosList = new ArrayList<Evento>();
+    ArrayList<Participante> participantesList = new ArrayList<Participante>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,4 +49,41 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == Activity.RESULT_OK && data != null) {
+
+            Bundle resultado = data.getExtras();
+
+            if (resultado.isEmpty()) {
+                return;
+            }
+
+            switch (requestCode) {
+                case MainActivity.REQUEST_PARTICIPANTE:
+                    String nome = resultado.getString("nome_participante");
+                    String email = resultado.getString("email_participante");
+                    String cpf = resultado.getString("cpf_participante");
+
+                    Participante participante = new Participante(nome,email,cpf);
+                    participantesList.add(participante);
+                    Toast.makeText(getApplicationContext(), "Participante Criado", Toast.LENGTH_SHORT).show();
+                    break;
+                case MainActivity.REQUEST_EVENTO:
+                    String titulo = resultado.getString("titulo_evento");
+                    String dia = resultado.getString("dia_evento");
+                    String hora = resultado.getString("hora_evento");
+                    String facilitador = resultado.getString("facilitador_evento");
+                    String descricao = resultado.getString("descricao_evento");
+
+                    Evento evento = new Evento(titulo,dia,hora,facilitador,descricao);
+                    eventosList.add(evento);
+                    Toast.makeText(getApplicationContext(),"Evento Criado", Toast.LENGTH_SHORT).show());
+            }
+        }
+    }
 }
+

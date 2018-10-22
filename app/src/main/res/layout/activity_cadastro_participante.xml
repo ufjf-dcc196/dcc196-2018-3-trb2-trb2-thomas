@@ -7,7 +7,7 @@
     tools:context=".CadastroParticipanteActivity">
 
     <EditText
-        android:id="@+id/txt_email"
+        android:id="@+id/txt_email_participante"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/txt_nome"
+        android:id="@+id/txt_nome_participante"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -41,7 +41,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/txt_cpf"
+        android:id="@+id/txt_cpf_participante"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -58,7 +58,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btn_confirmar"
+        android:id="@+id/btn_confirmar_participante"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -69,6 +69,6 @@
         android:text="Confirmar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/txt_nome" />
+        app:layout_constraintTop_toTopOf="@+id/txt_nome_participante" />
 
 </android.support.constraint.ConstraintLayout>
