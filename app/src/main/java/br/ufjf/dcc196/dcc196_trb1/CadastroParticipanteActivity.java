@@ -35,6 +35,7 @@ public class CadastroParticipanteActivity extends AppCompatActivity {
                 resultado.putExtra("email_participante", email);
                 resultado.putExtra("cpf_participante", cpf);
                 setResult(Activity.RESULT_OK, resultado);
+                finish();
             }
         });
     }
