@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView rclParticipantes;
     private RecyclerView rclEventos;
     private ParticipanteAdapter participanteAdapter;
+    private EventoAdapter eventoAdapter;
 
     ArrayList<Evento> eventosList = new ArrayList<>();
     ArrayList<Participante> participantesList = new ArrayList<>();
@@ -64,10 +65,10 @@ public class MainActivity extends AppCompatActivity {
         participanteAdapter = new ParticipanteAdapter(participantesList);
         rclParticipantes.setAdapter(participanteAdapter);
 
-        //LinearLayoutManager linearLayoutManagerEvento = new LinearLayoutManager(this);
-        //rclEventos.setLayoutManager(linearLayoutManagerEvento);
-        //EventoAdapter = new EventoAdapter(eventosList);
-        //rclEventos.setAdapter(eventosAdapter);
+        LinearLayoutManager linearLayoutManagerEvento = new LinearLayoutManager(this);
+        rclEventos.setLayoutManager(linearLayoutManagerEvento);
+        eventoAdapter = new EventoAdapter(eventosList);
+        rclEventos.setAdapter(eventoAdapter);
 
         listaParticipantesBD();
         listaEventosBD();
