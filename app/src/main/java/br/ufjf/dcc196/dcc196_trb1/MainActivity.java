@@ -95,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
                     Participante participante = new Participante(nome, email, cpf);
                     participantesList.add(participante);
                     Toast.makeText(getApplicationContext(), "Participante Criado", Toast.LENGTH_SHORT).show();
+                    participanteAdapter.notifyDataSetChanged();
                     break;
                 case MainActivity.REQUEST_EVENTO:
                     String titulo = resultado.getString("titulo_evento");
@@ -106,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
                     Evento evento = new Evento(titulo, dia, hora, facilitador, descricao);
                     eventosList.add(evento);
                     Toast.makeText(getApplicationContext(), "Evento Criado", Toast.LENGTH_SHORT).show();
+                    eventoAdapter.notifyDataSetChanged();
                     break;
             }
         }

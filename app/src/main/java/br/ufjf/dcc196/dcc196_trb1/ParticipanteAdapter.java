@@ -1,6 +1,9 @@
 package br.ufjf.dcc196.dcc196_trb1;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +27,7 @@ public class ParticipanteAdapter extends RecyclerView.Adapter<ParticipanteAdapte
 
         View view = inflater.inflate(R.layout.lista_participante, parent, false);
 
-        ViewHolderParticipante holderParticipante = new ViewHolderParticipante(view);
+        ViewHolderParticipante holderParticipante = new ViewHolderParticipante(view, parent.getContext());
 
         return holderParticipante;
     }
@@ -48,10 +51,18 @@ public class ParticipanteAdapter extends RecyclerView.Adapter<ParticipanteAdapte
 
         public TextView txt_nome;
 
-        public ViewHolderParticipante(View itemView) {
+        public ViewHolderParticipante(View itemView, final Context context) {
             super(itemView);
-
             txt_nome = (TextView) itemView.findViewById(R.id.txt_nome_participante_lista);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context,DetalhesParticipanteActivity.class);
+                    ((AppCompatActivity)context).startActivityForResult(intent, 2);
+                }
+            });
+
         }
     }
 }
