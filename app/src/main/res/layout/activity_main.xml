@@ -58,18 +58,22 @@
         app:layout_constraintVertical_bias="0.017" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/lista_participante"
+        android:id="@+id/rclview_lista_participante"
         android:layout_width="368dp"
         android:layout_height="114dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="155dp" />
+        android:layout_marginTop="156dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/lista_evento"
+        android:id="@+id/rclview_lista_evento"
         android:layout_width="368dp"
         android:layout_height="159dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="322dp" />
+        android:layout_marginTop="304dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txt_lista_evento"
