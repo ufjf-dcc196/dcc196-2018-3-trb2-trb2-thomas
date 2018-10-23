@@ -13,7 +13,7 @@ public class ParticipanteAdapter extends RecyclerView.Adapter<ParticipanteAdapte
     private List<Participante> dados;
 
 
-    public ParticipanteAdapter(List<Participante> dados){
+    public ParticipanteAdapter(List<Participante> dados) {
         this.dados = dados;
     }
 
@@ -31,7 +31,7 @@ public class ParticipanteAdapter extends RecyclerView.Adapter<ParticipanteAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ParticipanteAdapter.ViewHolderParticipante holder, int position) {
-        if(dados != null && dados.size() > 0) {
+        if (dados != null && dados.size() > 0) {
             Participante participante = dados.get(position);
             holder.txt_nome.setText(participante.getNome());
         }
@@ -44,13 +44,14 @@ public class ParticipanteAdapter extends RecyclerView.Adapter<ParticipanteAdapte
         return dados.size();
     }
 
-    public class ViewHolderParticipante extends RecyclerView.ViewHolder{
+    public class ViewHolderParticipante extends RecyclerView.ViewHolder {
 
         public TextView txt_nome;
+
         public ViewHolderParticipante(View itemView) {
             super(itemView);
 
-            txt_nome = (TextView)itemView.findViewById(R.id.txt_nome_participante_lista);
+            txt_nome = (TextView) itemView.findViewById(R.id.txt_nome_participante_lista);
         }
     }
 }

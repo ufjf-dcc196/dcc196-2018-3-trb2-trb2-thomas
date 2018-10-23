@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
         btn_cadastro_participante = (Button) findViewById(R.id.btn_cadastro_participante);
         btn_cadastro_evento = (Button) findViewById(R.id.btn_cadastro_evento);
-        rclParticipantes = (RecyclerView)findViewById(R.id.rclview_lista_participante);
-        rclEventos = (RecyclerView)findViewById(R.id.rclview_lista_evento);
+        rclParticipantes = (RecyclerView) findViewById(R.id.rclview_lista_participante);
+        rclEventos = (RecyclerView) findViewById(R.id.rclview_lista_evento);
 
         btn_cadastro_participante.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         rclParticipantes.setHasFixedSize(true);
+        rclEventos.setHasFixedSize(true);
 
         LinearLayoutManager linearLayoutManagerParticipante = new LinearLayoutManager(this);
         rclParticipantes.setLayoutManager(linearLayoutManagerParticipante);
@@ -90,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                     String email = resultado.getString("email_participante");
                     String cpf = resultado.getString("cpf_participante");
 
-                    Participante participante = new Participante(nome,email,cpf);
+                    Participante participante = new Participante(nome, email, cpf);
                     participantesList.add(participante);
                     Toast.makeText(getApplicationContext(), "Participante Criado", Toast.LENGTH_SHORT).show();
                     break;
@@ -101,27 +102,28 @@ public class MainActivity extends AppCompatActivity {
                     String facilitador = resultado.getString("facilitador_evento");
                     String descricao = resultado.getString("descricao_evento");
 
-                    Evento evento = new Evento(titulo,dia,hora,facilitador,descricao);
+                    Evento evento = new Evento(titulo, dia, hora, facilitador, descricao);
                     eventosList.add(evento);
-                    Toast.makeText(getApplicationContext(),"Evento Criado", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Evento Criado", Toast.LENGTH_SHORT).show();
                     break;
             }
         }
     }
 
-    public void listaParticipantesBD(){
-        participantesList.add(new Participante("Aluno1","aluno1@hotmail.com","11111111111"));
-        participantesList.add(new Participante("Aluno2","aluno2@hotmail.com","22222222222"));
-        participantesList.add(new Participante("Aluno3","aluno3@hotmail.com","33333333333"));
-        participantesList.add(new Participante("Aluno4","aluno4@hotmail.com","44444444444"));
-        participantesList.add(new Participante("Aluno5","aluno5@hotmail.com","55555555555"));
+    public void listaParticipantesBD() {
+        participantesList.add(new Participante("Aluno1", "aluno1@hotmail.com", "11111111111"));
+        participantesList.add(new Participante("Aluno2", "aluno2@hotmail.com", "22222222222"));
+        participantesList.add(new Participante("Aluno3", "aluno3@hotmail.com", "33333333333"));
+        participantesList.add(new Participante("Aluno4", "aluno4@hotmail.com", "44444444444"));
+        participantesList.add(new Participante("Aluno5", "aluno5@hotmail.com", "55555555555"));
     }
-    public void listaEventosBD(){
-        eventosList.add((new Evento("Evento1","Dia 1","01:00","Professor1","Workshop1")));
-        eventosList.add((new Evento("Evento2","Dia 2","02:00","Professor2","Workshop2")));
-        eventosList.add((new Evento("Evento3","Dia 3","03:00","Professor3","Workshop3")));
-        eventosList.add((new Evento("Evento4","Dia 4","04:00","Professor4","Workshop4")));
-        eventosList.add((new Evento("Evento5","Dia 5","05:00","Professor5","Workshop5")));
+
+    public void listaEventosBD() {
+        eventosList.add((new Evento("Evento1", "Dia 1", "01:00", "Professor1", "Workshop1")));
+        eventosList.add((new Evento("Evento2", "Dia 2", "02:00", "Professor2", "Workshop2")));
+        eventosList.add((new Evento("Evento3", "Dia 3", "03:00", "Professor3", "Workshop3")));
+        eventosList.add((new Evento("Evento4", "Dia 4", "04:00", "Professor4", "Workshop4")));
+        eventosList.add((new Evento("Evento5", "Dia 5", "05:00", "Professor5", "Workshop5")));
     }
 };
 

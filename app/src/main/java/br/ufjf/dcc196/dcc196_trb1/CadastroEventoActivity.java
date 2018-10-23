@@ -21,12 +21,12 @@ public class CadastroEventoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_evento);
-        txt_titulo = (EditText)findViewById(R.id.txt_titulo_evento);
-        txt_data = (EditText)findViewById(R.id.txt_titulo_evento);
-        txt_hora = (EditText)findViewById(R.id.txt_titulo_evento);
-        txt_facilitador = (EditText)findViewById(R.id.txt_titulo_evento);
-        txt_descricao = (EditText)findViewById(R.id.txt_titulo_evento);
-        btn_confirmar = (Button)findViewById(R.id.btn_confirmar_evento);
+        txt_titulo = (EditText) findViewById(R.id.txt_titulo_evento);
+        txt_data = (EditText) findViewById(R.id.txt_titulo_evento);
+        txt_hora = (EditText) findViewById(R.id.txt_titulo_evento);
+        txt_facilitador = (EditText) findViewById(R.id.txt_titulo_evento);
+        txt_descricao = (EditText) findViewById(R.id.txt_titulo_evento);
+        btn_confirmar = (Button) findViewById(R.id.btn_confirmar_evento);
 
         btn_confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,7 +41,7 @@ public class CadastroEventoActivity extends AppCompatActivity {
                 resultado.putExtra("titulo_evento", titulo);
                 resultado.putExtra("data_evento", data);
                 resultado.putExtra("hora_evento", hora);
-                resultado.putExtra("facilitador_evento",facilitador);
+                resultado.putExtra("facilitador_evento", facilitador);
                 resultado.putExtra("descricao_evento", descricao);
                 setResult(Activity.RESULT_OK, resultado);
                 finish();
