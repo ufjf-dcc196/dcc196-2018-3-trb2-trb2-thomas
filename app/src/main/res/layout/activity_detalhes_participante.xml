@@ -7,7 +7,7 @@
     tools:context=".DetalhesParticipanteActivity">
 
     <EditText
-        android:id="@+id/txt_nome_detalhe_participante"
+        android:id="@+id/edt_nome_detalhe_participante"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/txt_email_detalhe_participante"
+        android:id="@+id/edt_email_detalhe_participante"
         android:layout_width="213dp"
         android:layout_height="48dp"
         android:layout_marginEnd="8dp"
@@ -39,7 +39,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/txt_cpf_detalhe_participante"
+        android:id="@+id/edt_cpf_detalhe_participante"
         android:layout_width="216dp"
         android:layout_height="49dp"
         android:layout_marginEnd="8dp"
