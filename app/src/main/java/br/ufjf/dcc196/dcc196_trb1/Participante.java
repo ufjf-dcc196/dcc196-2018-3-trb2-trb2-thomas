@@ -1,8 +1,9 @@
 package br.ufjf.dcc196.dcc196_trb1;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Participante {
+public class Participante implements Serializable{
     private String nome, email, cpf;
     private ArrayList<Evento> eventosInscritos = new ArrayList<Evento>();
 

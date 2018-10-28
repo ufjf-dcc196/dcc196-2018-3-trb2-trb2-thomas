@@ -1,6 +1,8 @@
 package br.ufjf.dcc196.dcc196_trb1;
 
-public class Evento {
+import java.io.Serializable;
+
+public class Evento implements Serializable{
     private String titulo, dia, hora, facilitador, descricao;
 
     public Evento(String titulo, String dia, String hora, String facilitador, String descricao) {

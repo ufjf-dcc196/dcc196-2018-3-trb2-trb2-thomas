@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -58,8 +59,16 @@ public class ParticipanteAdapter extends RecyclerView.Adapter<ParticipanteAdapte
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(context,DetalhesParticipanteActivity.class);
-                    ((AppCompatActivity)context).startActivityForResult(intent, 2);
+
+                    if(dados.size()>0) {
+
+                        Participante participante = dados.get(getLayoutPosition());
+                        //Toast.makeText(context, "Participante: " + participante.getNome(), Toast.LENGTH_SHORT).show();
+
+                        Intent intent = new Intent(context, DetalhesParticipanteActivity.class);
+                        intent.putExtra("PARTICIPANTE", participante);
+                        ((AppCompatActivity) context).startActivityForResult(intent, 2);
+                    }
                 }
             });
 
