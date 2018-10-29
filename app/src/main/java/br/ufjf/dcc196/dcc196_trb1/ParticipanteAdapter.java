@@ -67,7 +67,7 @@ public class ParticipanteAdapter extends RecyclerView.Adapter<ParticipanteAdapte
 
                         Intent intent = new Intent(context, DetalhesParticipanteActivity.class);
                         intent.putExtra("PARTICIPANTE", participante);
-                        ((AppCompatActivity) context).startActivityForResult(intent, 3);
+                        ((AppCompatActivity) context).startActivityForResult(intent, MainActivity.REQUEST_ALTERA_DADOS_PARTICIPANTE);
                     }
                 }
             });

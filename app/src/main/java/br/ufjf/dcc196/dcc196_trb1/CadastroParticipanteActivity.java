@@ -24,6 +24,7 @@ public class CadastroParticipanteActivity extends AppCompatActivity {
         txt_cpf = (EditText) findViewById(R.id.txt_cpf_participante);
         botao_confirmar = (Button) findViewById(R.id.btn_confirmar_participante);
 
+        editaDados();
         botao_confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -38,5 +39,12 @@ public class CadastroParticipanteActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+    private void editaDados(){
+        if (getIntent().getExtras().getInt("REQUEST_ALTERA_DADOS_PARTICIPANTE") == MainActivity.REQUEST_ALTERA_DADOS_PARTICIPANTE) {
+            txt_nome.setText(getIntent().getExtras().get("NOVO_NOME").toString());
+            txt_email.setText(getIntent().getExtras().get("NOVO_EMAIL").toString());
+            txt_cpf.setText(getIntent().getExtras().get("NOVO_CPF").toString());
+        }
     }
 }
