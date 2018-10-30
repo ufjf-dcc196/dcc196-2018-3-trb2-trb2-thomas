@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class DetalhesParticipanteActivity extends AppCompatActivity {
     private TextView txt_nome;
@@ -45,7 +46,28 @@ public class DetalhesParticipanteActivity extends AppCompatActivity {
             }
         });
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
+        Bundle resultado = data.getExtras();
+
+        switch(requestCode){
+            case MainActivity.REQUEST_ALTERA_DADOS_PARTICIPANTE:
+                String nome = resultado.getString("nome_participante");
+                String email = resultado.getString("email_participante");
+                String cpf = resultado.getString("cpf_participante");
+
+                int posicao = resultado.getInt("POSICAO_PARTICIPANTE");
+                MainActivity.alteraDadosParticipante(posicao,nome, email, cpf);
+
+                txt_nome.setText(nome);
+                txt_email.setText(email);
+                txt_cpf.setText(cpf);
+                Toast.makeText(getApplicationContext(), "Dados alterados.", Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
     private void verificaParametro(){
         Bundle bundle = getIntent().getExtras();
         Participante participante = new Participante();

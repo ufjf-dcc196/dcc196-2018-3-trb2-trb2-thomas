@@ -24,11 +24,11 @@ public class MainActivity extends AppCompatActivity {
     private Button btn_cadastro_evento;
     private RecyclerView rclParticipantes;
     private RecyclerView rclEventos;
-    private ParticipanteAdapter participanteAdapter;
-    private EventoAdapter eventoAdapter;
+    private static ParticipanteAdapter participanteAdapter;
+    private static EventoAdapter eventoAdapter;
 
     ArrayList<Evento> eventosList = new ArrayList<>();
-    ArrayList<Participante> participantesList = new ArrayList<>();
+    static ArrayList<Participante> participantesList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,14 +111,6 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Evento Criado", Toast.LENGTH_SHORT).show();
                     eventoAdapter.notifyDataSetChanged();
                     break;
-                case MainActivity.REQUEST_ALTERA_DADOS_PARTICIPANTE:
-                    Participante participante_alterado = (Participante) resultado.getSerializable("PARTICIPANTE");
-                    participante_alterado.setNome("NOVO_NOME");
-                    participante_alterado.setEmail("NOVO_EMAIL");
-                    participante_alterado.setCpf("NOVO_CPF");
-                    Toast.makeText(getApplicationContext(), "Dados alterados.", Toast.LENGTH_SHORT).show();
-                    participanteAdapter.notifyDataSetChanged();
-                    break;
             }
         }
     }
@@ -137,6 +129,14 @@ public class MainActivity extends AppCompatActivity {
         eventosList.add((new Evento("Evento3", "Dia 3", "03:00", "Professor3", "Workshop3")));
         eventosList.add((new Evento("Evento4", "Dia 4", "04:00", "Professor4", "Workshop4")));
         eventosList.add((new Evento("Evento5", "Dia 5", "05:00", "Professor5", "Workshop5")));
+    }
+
+    public static void alteraDadosParticipante(int posicao, String nome, String email, String cpf){
+        participantesList.get(posicao).setNome(nome);
+        participantesList.get(posicao).setEmail(email);
+        participantesList.get(posicao).setCpf(cpf);
+
+        participanteAdapter.notifyDataSetChanged();
     }
 };
 
