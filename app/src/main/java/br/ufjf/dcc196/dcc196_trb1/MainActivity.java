@@ -44,7 +44,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, CadastroParticipanteActivity.class);
+                intent.putExtra("REQUEST_PARTICIPANTE_OU_ALTERA", MainActivity.REQUEST_PARTICIPANTE);
                 startActivityForResult(intent, MainActivity.REQUEST_PARTICIPANTE);
+
             }
         });
 
@@ -108,6 +110,14 @@ public class MainActivity extends AppCompatActivity {
                     eventosList.add(evento);
                     Toast.makeText(getApplicationContext(), "Evento Criado", Toast.LENGTH_SHORT).show();
                     eventoAdapter.notifyDataSetChanged();
+                    break;
+                case MainActivity.REQUEST_ALTERA_DADOS_PARTICIPANTE:
+                    Participante participante_alterado = (Participante) resultado.getSerializable("PARTICIPANTE");
+                    participante_alterado.setNome("NOVO_NOME");
+                    participante_alterado.setEmail("NOVO_EMAIL");
+                    participante_alterado.setCpf("NOVO_CPF");
+                    Toast.makeText(getApplicationContext(), "Dados alterados.", Toast.LENGTH_SHORT).show();
+                    participanteAdapter.notifyDataSetChanged();
                     break;
             }
         }

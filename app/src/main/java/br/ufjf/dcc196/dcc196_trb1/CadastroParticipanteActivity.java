@@ -41,10 +41,12 @@ public class CadastroParticipanteActivity extends AppCompatActivity {
         });
     }
     private void editaDados(){
-        if (getIntent().getExtras().getInt("REQUEST_ALTERA_DADOS_PARTICIPANTE") == MainActivity.REQUEST_ALTERA_DADOS_PARTICIPANTE) {
-            txt_nome.setText(getIntent().getExtras().get("NOVO_NOME").toString());
-            txt_email.setText(getIntent().getExtras().get("NOVO_EMAIL").toString());
-            txt_cpf.setText(getIntent().getExtras().get("NOVO_CPF").toString());
+        Bundle bundle = getIntent().getExtras();
+        if(bundle.getInt("REQUEST_PARTICIPANTE_OU_ALTERA") == MainActivity.REQUEST_ALTERA_DADOS_PARTICIPANTE) {
+                txt_nome.setText(bundle.get("NOVO_NOME").toString());
+                txt_email.setText(bundle.get("NOVO_EMAIL").toString());
+                txt_cpf.setText(bundle.get("NOVO_CPF").toString());
+            }
         }
     }
-}
+

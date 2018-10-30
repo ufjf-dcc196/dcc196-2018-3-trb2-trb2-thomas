@@ -66,6 +66,7 @@ public class ParticipanteAdapter extends RecyclerView.Adapter<ParticipanteAdapte
                         //Toast.makeText(context, "Participante: " + participante.getNome(), Toast.LENGTH_SHORT).show();
 
                         Intent intent = new Intent(context, DetalhesParticipanteActivity.class);
+                        intent.putExtra("POSICAO_PARTICIPANTE", getLayoutPosition());
                         intent.putExtra("PARTICIPANTE", participante);
                         ((AppCompatActivity) context).startActivityForResult(intent, MainActivity.REQUEST_ALTERA_DADOS_PARTICIPANTE);
                     }

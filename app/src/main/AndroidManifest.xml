@@ -20,7 +20,6 @@
         <activity android:name=".CadastroEventoActivity" />
         <activity android:name=".DetalhesParticipanteActivity" />
         <activity android:name=".DetalhesEventoActivity" />
-        <activity android:name=".EditaParticipanteActivity"></activity>
     </application>
 
 </manifest>

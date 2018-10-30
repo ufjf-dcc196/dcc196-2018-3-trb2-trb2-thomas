@@ -18,6 +18,7 @@ public class DetalhesParticipanteActivity extends AppCompatActivity {
     private RecyclerView rcl_list_eventos;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,10 +34,13 @@ public class DetalhesParticipanteActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(DetalhesParticipanteActivity.this, CadastroParticipanteActivity.class);
-                intent.putExtra("NOVO_NOME", txt_nome.getText().toString());
-                intent.putExtra("NOVO_EMAIL", txt_email.getText().toString());
-                intent.putExtra("NOVO_CPF", txt_cpf.getText().toString());
-                intent.putExtra("REQUEST_ALTERA_DADOS_PARTICIPANTE", MainActivity.REQUEST_ALTERA_DADOS_PARTICIPANTE);
+                String nome = txt_nome.getText().toString();
+                String email = txt_email.getText().toString();
+                String cpf = txt_cpf.getText().toString();
+                intent.putExtra("NOVO_NOME", nome);
+                intent.putExtra("NOVO_EMAIL", email);
+                intent.putExtra("NOVO_CPF", cpf);
+                intent.putExtra("REQUEST_PARTICIPANTE_OU_ALTERA", MainActivity.REQUEST_ALTERA_DADOS_PARTICIPANTE);
                 startActivityForResult(intent,MainActivity.REQUEST_ALTERA_DADOS_PARTICIPANTE);
             }
         });
@@ -44,9 +48,10 @@ public class DetalhesParticipanteActivity extends AppCompatActivity {
 
     private void verificaParametro(){
         Bundle bundle = getIntent().getExtras();
+        Participante participante = new Participante();
         if(bundle!=null && bundle.containsKey("PARTICIPANTE")){
 
-            Participante participante = (Participante)bundle.getSerializable("PARTICIPANTE");
+            participante = (Participante)bundle.getSerializable("PARTICIPANTE");
             txt_nome.setText(participante.getNome());
             txt_email.setText(participante.getEmail());
             txt_cpf.setText(participante.getCpf());
