@@ -19,8 +19,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/edt_titulo_detalhe_evento"
+    <TextView
+        android:id="@+id/txt_titulo_detalhe_evento"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginEnd="8dp"
@@ -35,10 +35,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/edt_hora_detalhe_evento"
+    <TextView
+        android:id="@+id/txt_hora_detalhe_evento"
         android:layout_width="0dp"
-        android:layout_height="34dp"
+        android:layout_height="41dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -52,8 +52,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/edt_data_detalhe_evento"
+    <TextView
+        android:id="@+id/txt_data_detalhe_evento"
         android:layout_width="0dp"
         android:layout_height="38dp"
         android:layout_marginEnd="8dp"
@@ -69,8 +69,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/edt_facilitador_detalhe_evento"
+    <TextView
+        android:id="@+id/txt_facilitador_detalhe_evento"
         android:layout_width="0dp"
         android:layout_height="38dp"
         android:layout_marginEnd="8dp"
@@ -85,8 +85,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/edt_descricao_detalhe_evento"
+    <TextView
+        android:id="@+id/txt_descricao_detalhe_evento"
         android:layout_width="0dp"
         android:layout_height="70dp"
         android:layout_marginEnd="8dp"

@@ -7,11 +7,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class DetalhesParticipanteActivity extends AppCompatActivity {
-    private EditText txt_nome;
-    private EditText txt_email;
-    private EditText txt_cpf;
+    private TextView txt_nome;
+    private TextView txt_email;
+    private TextView txt_cpf;
     private Button btn_altera;
     private Button btn_inscreve;
     private RecyclerView rcl_list_eventos;
@@ -21,9 +22,9 @@ public class DetalhesParticipanteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalhes_participante);
-        txt_nome = (EditText)findViewById(R.id.txt_nome_detalhe_participante);
-        txt_email = (EditText)findViewById(R.id.txt_email_detalhe_participante);
-        txt_cpf = (EditText)findViewById(R.id.txt_cpf_detalhe_participante);
+        txt_nome = (TextView) findViewById(R.id.txt_nome_detalhe_participante);
+        txt_email = (TextView) findViewById(R.id.txt_email_detalhe_participante);
+        txt_cpf = (TextView) findViewById(R.id.txt_cpf_detalhe_participante);
         btn_altera = (Button)findViewById(R.id.btn_altera_detalhe_participante);
 
         verificaParametro();

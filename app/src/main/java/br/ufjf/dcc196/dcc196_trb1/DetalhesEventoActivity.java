@@ -3,23 +3,24 @@ package br.ufjf.dcc196.dcc196_trb1;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class DetalhesEventoActivity extends AppCompatActivity {
-    EditText edt_titulo;
-    EditText edt_hora;
-    EditText edt_dia;
-    EditText edt_facilitador;
-    EditText edt_descricao;
+    TextView edt_titulo;
+    TextView edt_hora;
+    TextView edt_dia;
+    TextView edt_facilitador;
+    TextView edt_descricao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalhes_evento);
-        edt_titulo = (EditText)findViewById(R.id.edt_titulo_detalhe_evento);
-        edt_hora = (EditText)findViewById(R.id.edt_hora_detalhe_evento);
-        edt_dia = (EditText)findViewById(R.id.edt_data_detalhe_evento);
-        edt_facilitador = (EditText)findViewById(R.id.edt_facilitador_detalhe_evento);
-        edt_descricao = (EditText)findViewById(R.id.edt_descricao_detalhe_evento);
+        edt_titulo = (TextView) findViewById(R.id.txt_titulo_detalhe_evento);
+        edt_hora = (TextView) findViewById(R.id.txt_hora_detalhe_evento);
+        edt_dia = (TextView) findViewById(R.id.txt_data_detalhe_evento);
+        edt_facilitador = (TextView) findViewById(R.id.txt_facilitador_detalhe_evento);
+        edt_descricao = (TextView) findViewById(R.id.txt_descricao_detalhe_evento);
 
         verificaParametro();
     }
