@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     public static final int REQUEST_DADOS_PARTICIPANTE = 3;
     public static final int REQUEST_DADOS_EVENTO = 4;
     public static final int REQUEST_ALTERA_DADOS_PARTICIPANTE = 5;
+    public static final int REQUEST_INSCREVE_EVENTO= 6;
 
     private Button btn_cadastro_participante;
     private Button btn_cadastro_evento;
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private static ParticipanteAdapter participanteAdapter;
     private static EventoAdapter eventoAdapter;
 
-    ArrayList<Evento> eventosList = new ArrayList<>();
+    static ArrayList<Evento> eventosList = new ArrayList<>();
     static ArrayList<Participante> participantesList = new ArrayList<>();
 
     @Override

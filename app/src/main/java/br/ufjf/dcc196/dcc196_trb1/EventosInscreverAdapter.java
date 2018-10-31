@@ -51,7 +51,11 @@ public class EventosInscreverAdapter extends RecyclerView.Adapter<EventosInscrev
                 @Override
                 public void onClick(View view) {
                     if(dados.size()>0){
+                        Evento evento = dados.get(getLayoutPosition());
 
+                        Intent intent = new Intent(context, DetalhesParticipanteActivity.class);
+                        intent.putExtra("EVENTO_INSCRITO", evento);
+                        ((AppCompatActivity)context).startActivityForResult(intent,MainActivity.REQUEST_INSCREVE_EVENTO);
                     }
                 }
             });

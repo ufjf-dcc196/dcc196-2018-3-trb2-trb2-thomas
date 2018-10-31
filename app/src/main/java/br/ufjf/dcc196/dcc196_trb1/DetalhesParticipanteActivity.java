@@ -15,7 +15,6 @@ public class DetalhesParticipanteActivity extends AppCompatActivity {
     private TextView txt_email;
     private TextView txt_cpf;
     private Button btn_altera;
-    private Button btn_inscreve;
     private RecyclerView rcl_list_eventos;
 
 
@@ -66,6 +65,13 @@ public class DetalhesParticipanteActivity extends AppCompatActivity {
                 txt_cpf.setText(cpf);
                 Toast.makeText(getApplicationContext(), "Dados alterados.", Toast.LENGTH_SHORT).show();
                 break;
+
+                case MainActivity.REQUEST_INSCREVE_EVENTO:
+                    int posicao_participante = resultado.getInt("POSICAO_PARTICIPANTE");
+                    int posicao_evento = resultado.getInt("EVENTO_INSCRITO");
+                    Participante participante = MainActivity.participantesList.get(posicao_participante);
+                    Evento evento = MainActivity.eventosList.get(posicao_evento);
+                    participante.inscreveEmEvento(evento);
         }
     }
     private void verificaParametro(){
