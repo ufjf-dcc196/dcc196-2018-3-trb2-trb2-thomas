@@ -20,6 +20,8 @@ public class Participante implements Serializable{
         this.eventosInscritos.add(evento);
     }
 
+    public void removeDoEvento(int position){ this.eventosInscritos.remove(position);}
+
     
     public ArrayList<Evento> getEventosInscritos() {
         return eventosInscritos;

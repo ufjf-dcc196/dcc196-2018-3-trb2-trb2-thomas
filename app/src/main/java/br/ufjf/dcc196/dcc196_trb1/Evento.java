@@ -12,6 +12,9 @@ public class Evento implements Serializable{
         return participantesInscritos;
     }
 
+    public void inscreveNoEvento(Participante participante){this.participantesInscritos.add(participante);}
+    public void cancelaInscricao(int position){ this.participantesInscritos.remove(position);}
+
     public Evento(String titulo, String dia, String hora, String facilitador, String descricao) {
         this.titulo = titulo;
         this.dia = dia;
