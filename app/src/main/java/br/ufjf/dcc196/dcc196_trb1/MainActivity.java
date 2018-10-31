@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     public static final int REQUEST_DADOS_EVENTO = 4;
     public static final int REQUEST_ALTERA_DADOS_PARTICIPANTE = 5;
     public static final int REQUEST_INSCREVE_EVENTO= 6;
+    public static final int REQUEST_PARTICIPANTES_INSCRITOS= 7;
 
     private Button btn_cadastro_participante;
     private Button btn_cadastro_evento;

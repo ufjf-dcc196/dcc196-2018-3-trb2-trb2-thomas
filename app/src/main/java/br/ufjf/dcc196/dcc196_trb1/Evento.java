@@ -1,9 +1,16 @@
 package br.ufjf.dcc196.dcc196_trb1;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Evento implements Serializable{
     private String titulo, dia, hora, facilitador, descricao;
+    private ArrayList<Participante> participantesInscritos = new ArrayList<>();
+
+    public ArrayList<Participante> getParticipantesInscritos() {
+        return participantesInscritos;
+    }
 
     public Evento(String titulo, String dia, String hora, String facilitador, String descricao) {
         this.titulo = titulo;

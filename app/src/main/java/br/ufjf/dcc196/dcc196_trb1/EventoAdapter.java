@@ -58,6 +58,7 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.ViewHolder
                         Evento evento = dados.get(getLayoutPosition());
 
                         Intent intent = new Intent(context, DetalhesEventoActivity.class);
+                        intent.putExtra("POSICAO_EVENTO", getLayoutPosition());
                         intent.putExtra("EVENTO", evento);
                         ((AppCompatActivity)context).startActivityForResult(intent,4);
                     }

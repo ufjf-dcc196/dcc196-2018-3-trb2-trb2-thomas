@@ -72,7 +72,7 @@ public class DetalhesParticipanteActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        Bundle resultado = data.getExtras();
+        Bundle resultado = getIntent().getExtras();
 
         switch(requestCode){
             case MainActivity.REQUEST_ALTERA_DADOS_PARTICIPANTE:
@@ -90,6 +90,7 @@ public class DetalhesParticipanteActivity extends AppCompatActivity {
                 break;
 
                 case MainActivity.REQUEST_INSCREVE_EVENTO:
+
                     int posicao_participante = resultado.getInt("POSICAO_PARTICIPANTE");
                     //int posicao_evento = resultado.getInt("EVENTO_INSCRITO");
                     Participante participante = participantesList.get(posicao_participante);
@@ -97,6 +98,7 @@ public class DetalhesParticipanteActivity extends AppCompatActivity {
                     participante.inscreveEmEvento(evento);
                     this.eventosInscritosAdapter.notifyDataSetChanged();
                     Toast.makeText(getApplicationContext(), "Inscrito em evento.", Toast.LENGTH_SHORT).show();
+                    finish();
                     break;
         }
     }
