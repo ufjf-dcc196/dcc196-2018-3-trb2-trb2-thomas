@@ -19,6 +19,7 @@ public class Participante implements Serializable{
     public void inscreveEmEvento(Evento evento){
         this.eventosInscritos.add(evento);
     }
+
     
     public ArrayList<Evento> getEventosInscritos() {
         return eventosInscritos;
