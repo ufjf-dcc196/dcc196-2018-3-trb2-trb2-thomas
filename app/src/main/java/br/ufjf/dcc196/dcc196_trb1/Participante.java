@@ -16,6 +16,10 @@ public class Participante implements Serializable{
         this.cpf = cpf;
     }
 
+    public void inscreveEmEvento(Evento evento){
+        this.eventosInscritos.add(evento);
+    }
+    
     public ArrayList<Evento> getEventosInscritos() {
         return eventosInscritos;
     }
