@@ -2,8 +2,10 @@ package br.ufjf.dcc196.dcc196_trb1;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,6 +34,15 @@ public class CadastroParticipanteActivity extends AppCompatActivity {
                 String nome = txt_nome.getText().toString();
                 String email = txt_email.getText().toString();
                 String cpf = txt_cpf.getText().toString();
+
+                if(isCampoVazio(nome)){
+                    txt_nome.requestFocus();
+                }else if(isCampoVazio(cpf)){
+                    txt_cpf.requestFocus();
+                }else if(!isEmailValido(email)){
+                    txt_email.requestFocus();
+                }
+
                 resultado.putExtra("nome_participante", nome);
                 resultado.putExtra("email_participante", email);
                 resultado.putExtra("cpf_participante", cpf);
@@ -40,6 +51,17 @@ public class CadastroParticipanteActivity extends AppCompatActivity {
             }
         });
     }
+
+    private boolean isCampoVazio(String valor){
+        boolean resultado = (TextUtils.isEmpty(valor) || valor.trim().isEmpty());
+        return resultado;
+    }
+
+    private boolean isEmailValido(String email){
+        boolean resultado = (!isCampoVazio(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches());
+        return resultado;
+    }
+
     private void editaDados(){
         Bundle bundle = getIntent().getExtras();
         if(bundle.getInt("REQUEST_PARTICIPANTE_OU_ALTERA") == MainActivity.REQUEST_ALTERA_DADOS_PARTICIPANTE) {
