@@ -1,17 +1,23 @@
 package br.ufjf.dcc196.dcc196_trb1;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import br.ufjf.dcc196.dcc196_trb1.Database.DadosOpenHelper;
 
 public class MainActivity extends AppCompatActivity {
     public static final int REQUEST_PARTICIPANTE = 1;
@@ -22,12 +28,17 @@ public class MainActivity extends AppCompatActivity {
     public static final int REQUEST_INSCREVE_EVENTO= 6;
     public static final int REQUEST_PARTICIPANTES_INSCRITOS= 7;
 
+
+    private SQLiteDatabase connection;
+    private DadosOpenHelper dadosOpenHelper;
+
     private Button btn_cadastro_participante;
     private Button btn_cadastro_evento;
     private RecyclerView rclParticipantes;
     private RecyclerView rclEventos;
     private static ParticipanteAdapter participanteAdapter;
     private static EventoAdapter eventoAdapter;
+    private ConstraintLayout layoutActivityMain;
 
     static ArrayList<Evento> eventosList = new ArrayList<>();
     static ArrayList<Participante> participantesList = new ArrayList<>();
@@ -41,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         btn_cadastro_evento = (Button) findViewById(R.id.btn_cadastro_evento);
         rclParticipantes = (RecyclerView) findViewById(R.id.rclview_lista_participante);
         rclEventos = (RecyclerView) findViewById(R.id.rclview_lista_evento);
+        layoutActivityMain = (ConstraintLayout) findViewById(R.id.layoutActivityMain);
 
         btn_cadastro_participante.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         eventoAdapter = new EventoAdapter(eventosList);
         rclEventos.setAdapter(eventoAdapter);
 
+        criarConexao();
         listaParticipantesBD();
         listaEventosBD();
     }
@@ -114,6 +127,25 @@ public class MainActivity extends AppCompatActivity {
                     eventoAdapter.notifyDataSetChanged();
                     break;
             }
+        }
+    }
+
+    private void criarConexao(){
+        try{
+
+            dadosOpenHelper = new DadosOpenHelper(this);
+
+            connection = dadosOpenHelper.getWritableDatabase();
+
+            Snackbar.make(layoutActivityMain, "Conexão criada com sucesso.", Snackbar.LENGTH_SHORT).setAction("OK", null).show();
+
+        }catch(SQLException ex){
+
+            AlertDialog.Builder dlg = new AlertDialog.Builder(this);
+            dlg.setTitle("Erro");
+            dlg.setMessage(ex.getMessage());
+            dlg.setNeutralButton("OK", null);
+            dlg.show();
         }
     }
 
