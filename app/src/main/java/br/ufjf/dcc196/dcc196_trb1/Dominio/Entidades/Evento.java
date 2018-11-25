@@ -4,16 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Evento implements Serializable{
+
+
+
     private int codigo;
-
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
-
     private String titulo, dia, hora, facilitador, descricao;
     private ArrayList<Participante> participantesInscritos = new ArrayList<>();
 
@@ -24,6 +18,9 @@ public class Evento implements Serializable{
     public void inscreveNoEvento(Participante participante){this.participantesInscritos.add(participante);}
     public void cancelaInscricao(int position){ this.participantesInscritos.remove(position);}
 
+    public Evento(){
+
+    }
     public Evento(String titulo, String dia, String hora, String facilitador, String descricao) {
         this.titulo = titulo;
         this.dia = dia;
@@ -31,6 +28,10 @@ public class Evento implements Serializable{
         this.facilitador = facilitador;
         this.descricao = descricao;
     }
+
+    public int getCodigo() { return codigo; }
+
+    public void setCodigo(int codigo) { this.codigo = codigo;}
 
     public String getTitulo() {
         return titulo;

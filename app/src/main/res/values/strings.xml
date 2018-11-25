@@ -3,4 +3,6 @@
     <string name="message_conexao_criada_sucesso">Conexão criada com sucesso.</string>
     <string name="action_ok">OK</string>
     <string name="title_erro">Erro</string>
+    <string name="title_aviso">Aviso</string>
+    <string name="message_campos_invalidos">Há campos inválidos ou em branco.</string>
 </resources>

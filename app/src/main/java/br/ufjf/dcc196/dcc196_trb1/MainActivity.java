@@ -16,10 +16,13 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import br.ufjf.dcc196.dcc196_trb1.Database.DadosOpenHelper;
 import br.ufjf.dcc196.dcc196_trb1.Dominio.Entidades.Evento;
 import br.ufjf.dcc196.dcc196_trb1.Dominio.Entidades.Participante;
+import br.ufjf.dcc196.dcc196_trb1.Dominio.Repositorio.EventoRepositorio;
+import br.ufjf.dcc196.dcc196_trb1.Dominio.Repositorio.ParticipanteRepositorio;
 
 public class MainActivity extends AppCompatActivity {
     public static final int REQUEST_PARTICIPANTE = 1;
@@ -33,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
     private SQLiteDatabase connection;
     private DadosOpenHelper dadosOpenHelper;
+    private ParticipanteRepositorio participanteRepositorio;
+    private EventoRepositorio eventoRepositorio;
 
     private Button btn_cadastro_participante;
     private Button btn_cadastro_evento;
@@ -74,20 +79,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        //OTIMIZA OS RECYCLERVIEWS//
         rclParticipantes.setHasFixedSize(true);
         rclEventos.setHasFixedSize(true);
 
+        //CONFIGURAÇÃO DO RECYCLERVIEW PARTICIPANTES ACTIVITY MAIN//
         LinearLayoutManager linearLayoutManagerParticipante = new LinearLayoutManager(this);
         rclParticipantes.setLayoutManager(linearLayoutManagerParticipante);
-        participanteAdapter = new ParticipanteAdapter(participantesList);
+        participanteRepositorio = new ParticipanteRepositorio(connection);
+        List<Participante> dadosParticipantes = participanteRepositorio.buscarTodos();
+        participanteAdapter = new ParticipanteAdapter(dadosParticipantes);
         rclParticipantes.setAdapter(participanteAdapter);
+        //CONFIGURAÇÃO DO RECYCLERVIEW PARTICIPANTES ACTIVITY MAIN//
 
+        //CONFIGURAÇÃO DO RECYCLERVIEW EVENTOS ACTIVITY MAIN//
         LinearLayoutManager linearLayoutManagerEvento = new LinearLayoutManager(this);
         rclEventos.setLayoutManager(linearLayoutManagerEvento);
-        eventoAdapter = new EventoAdapter(eventosList);
+        List<Evento> dadosEventos = eventoRepositorio.buscarTodos();
+        eventoAdapter = new EventoAdapter(dadosEventos);
         rclEventos.setAdapter(eventoAdapter);
-
+        //CONFIGURAÇÃO DO RECYCLERVIEW EVENTOS ACTIVITY MAIN//
         criarConexao();
         listaParticipantesBD();
         listaEventosBD();
@@ -107,24 +118,24 @@ public class MainActivity extends AppCompatActivity {
 
             switch (requestCode) {
                 case MainActivity.REQUEST_PARTICIPANTE:
-                    String nome = resultado.getString("nome_participante");
-                    String email = resultado.getString("email_participante");
-                    String cpf = resultado.getString("cpf_participante");
+                    //String nome = resultado.getString("nome_participante");
+                    //String email = resultado.getString("email_participante");
+                    //String cpf = resultado.getString("cpf_participante");
 
-                    Participante participante = new Participante(nome, email, cpf);
-                    participantesList.add(participante);
+                    //Participante participante = new Participante(nome, email, cpf);
+                    //participantesList.add(participante);
                     Toast.makeText(getApplicationContext(), "Participante Criado", Toast.LENGTH_SHORT).show();
                     participanteAdapter.notifyDataSetChanged();
                     break;
                 case MainActivity.REQUEST_EVENTO:
-                    String titulo = resultado.getString("titulo_evento");
-                    String dia = resultado.getString("dia_evento");
-                    String hora = resultado.getString("hora_evento");
-                    String facilitador = resultado.getString("facilitador_evento");
-                    String descricao = resultado.getString("descricao_evento");
+                    //String titulo = resultado.getString("titulo_evento");
+                    //String dia = resultado.getString("dia_evento");
+                    //String hora = resultado.getString("hora_evento");
+                   // String facilitador = resultado.getString("facilitador_evento");
+                    //String descricao = resultado.getString("descricao_evento");
 
-                    Evento evento = new Evento(titulo, dia, hora, facilitador, descricao);
-                    eventosList.add(evento);
+                    //Evento evento = new Evento(titulo, dia, hora, facilitador, descricao);
+                    //eventosList.add(evento);
                     Toast.makeText(getApplicationContext(), "Evento Criado", Toast.LENGTH_SHORT).show();
                     eventoAdapter.notifyDataSetChanged();
                     break;
