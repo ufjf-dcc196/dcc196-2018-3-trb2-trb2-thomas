@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import br.ufjf.dcc196.dcc196_trb1.Dominio.Entidades.Participante;
+
 public class ParticipantesEventoAdapter extends RecyclerView.Adapter<ParticipantesEventoAdapter.ViewHolderParticipantesEvento>{
     private List<Participante> dados;
 

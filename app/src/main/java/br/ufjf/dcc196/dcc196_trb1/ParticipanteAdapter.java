@@ -9,9 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
+
+import br.ufjf.dcc196.dcc196_trb1.Dominio.Entidades.Participante;
 
 public class ParticipanteAdapter extends RecyclerView.Adapter<ParticipanteAdapter.ViewHolderParticipante> {
     private List<Participante> dados;

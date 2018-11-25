@@ -1,14 +1,14 @@
 package br.ufjf.dcc196.dcc196_trb1;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.EditText;
 import android.widget.TextView;
 
+import br.ufjf.dcc196.dcc196_trb1.Dominio.Entidades.Evento;
+
 import static br.ufjf.dcc196.dcc196_trb1.MainActivity.eventosList;
-import static br.ufjf.dcc196.dcc196_trb1.MainActivity.participantesList;
 
 public class DetalhesEventoActivity extends AppCompatActivity {
     TextView edt_titulo;
@@ -36,6 +36,7 @@ public class DetalhesEventoActivity extends AppCompatActivity {
 
         LinearLayoutManager linearLayoutManagerLista = new LinearLayoutManager(this);
         rcl_lista_participantes.setLayoutManager(linearLayoutManagerLista);
+
         int posicao = getIntent().getExtras().getInt("POSICAO_EVENTO");
         participantesEventoAdapter = new ParticipantesEventoAdapter(eventosList.get(posicao).getParticipantesInscritos());
         rcl_lista_participantes.setAdapter(participantesEventoAdapter);

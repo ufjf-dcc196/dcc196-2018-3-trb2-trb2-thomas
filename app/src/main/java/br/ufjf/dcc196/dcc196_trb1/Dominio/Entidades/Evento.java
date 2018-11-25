@@ -1,10 +1,19 @@
-package br.ufjf.dcc196.dcc196_trb1;
+package br.ufjf.dcc196.dcc196_trb1.Dominio.Entidades;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Evento implements Serializable{
+    private int codigo;
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
     private String titulo, dia, hora, facilitador, descricao;
     private ArrayList<Participante> participantesInscritos = new ArrayList<>();
 

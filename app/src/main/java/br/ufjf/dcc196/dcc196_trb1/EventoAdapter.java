@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import br.ufjf.dcc196.dcc196_trb1.Dominio.Entidades.Evento;
+
 public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.ViewHolderEvento>{
 
     private List<Evento> dados;

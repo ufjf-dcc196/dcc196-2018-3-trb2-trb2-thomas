@@ -1,15 +1,17 @@
 package br.ufjf.dcc196.dcc196_trb1;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import br.ufjf.dcc196.dcc196_trb1.Dominio.Entidades.Evento;
+import br.ufjf.dcc196.dcc196_trb1.Dominio.Entidades.Participante;
 
 import static br.ufjf.dcc196.dcc196_trb1.MainActivity.eventosList;
 import static br.ufjf.dcc196.dcc196_trb1.MainActivity.participantesList;
@@ -96,7 +98,7 @@ public class DetalhesParticipanteActivity extends AppCompatActivity {
                     Participante participante = participantesList.get(posicao_participante);
                     Evento evento = (Evento)resultado.getSerializable("EVENTO_INSCRITO");
                     participante.inscreveEmEvento(evento);
-                    this.eventosInscritosAdapter.notifyDataSetChanged();
+                    eventosInscritosAdapter.notifyDataSetChanged();
                     Toast.makeText(getApplicationContext(), "Inscrito em evento.", Toast.LENGTH_SHORT).show();
                     finish();
                     break;

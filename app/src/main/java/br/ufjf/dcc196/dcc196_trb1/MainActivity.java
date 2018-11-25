@@ -18,6 +18,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import br.ufjf.dcc196.dcc196_trb1.Database.DadosOpenHelper;
+import br.ufjf.dcc196.dcc196_trb1.Dominio.Entidades.Evento;
+import br.ufjf.dcc196.dcc196_trb1.Dominio.Entidades.Participante;
 
 public class MainActivity extends AppCompatActivity {
     public static final int REQUEST_PARTICIPANTE = 1;
@@ -137,14 +139,14 @@ public class MainActivity extends AppCompatActivity {
 
             connection = dadosOpenHelper.getWritableDatabase();
 
-            Snackbar.make(layoutActivityMain, "Conexão criada com sucesso.", Snackbar.LENGTH_SHORT).setAction("OK", null).show();
+            Snackbar.make(layoutActivityMain, R.string.message_conexao_criada_sucesso, Snackbar.LENGTH_SHORT).setAction("OK", null).show();
 
         }catch(SQLException ex){
 
             AlertDialog.Builder dlg = new AlertDialog.Builder(this);
-            dlg.setTitle("Erro");
+            dlg.setTitle(R.string.title_erro);
             dlg.setMessage(ex.getMessage());
-            dlg.setNeutralButton("OK", null);
+            dlg.setNeutralButton(R.string.action_ok, null);
             dlg.show();
         }
     }
@@ -172,5 +174,5 @@ public class MainActivity extends AppCompatActivity {
 
         participanteAdapter.notifyDataSetChanged();
     }
-};
+}
 
