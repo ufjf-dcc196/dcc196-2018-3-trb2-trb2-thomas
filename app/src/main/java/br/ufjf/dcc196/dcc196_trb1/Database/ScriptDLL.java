@@ -5,11 +5,11 @@ public class ScriptDLL {
     public static String getCreateTableParticipante(){
         StringBuilder sql = new StringBuilder();
 
-        sql.append("CREATE TABLE IF NOT EXISTS Participante ( ");
-        sql.append("        codigo INTEGER       PRIMARY KEY AUTOINCREMENT NOT NULL, " );
-        sql.append("        nome   VARCHAR (250) NOT NULL DEFAULT (''), ");
-        sql.append("        email  VARCHAR (250) NOT NULL DEFAULT (''), ");
-        sql.append("        cpf    VARCHAR (250) DEFAULT ('') NOT NULL ) ");
+        sql.append("CREATE TABLE IF NOT EXISTS PARTICIPANTE ( ");
+        sql.append("    CODIGO   INTEGER      PRIMARY KEY AUTOINCREMENT NOT NULL, ");
+        sql.append("    NOME     VARCHAR(250) NOT NULL DEFAULT(''), ");
+        sql.append("    EMAIL    VARCHAR(250) NOT NULL DEFAULT(''), ");
+        sql.append("    CPF VARCHAR(20)  NOT NULL DEFAULT('') ) ");
 
         return sql.toString();
     }
@@ -17,13 +17,13 @@ public class ScriptDLL {
     public static String getCreateTableEvento(){
         StringBuilder sql = new StringBuilder();
 
-        sql.append("CREATE TABLE IF NOT EXISTS Evento ( ");
-        sql.append("        codigo      INTEGER       PRIMARY KEY AUTOINCREMENT NOT NULL, " );
-        sql.append("        titulo      VARCHAR (250) NOT NULL DEFAULT (''), ");
-        sql.append("        dia         DATE (250)    NOT NULL DEFAULT (''), ");
-        sql.append("        hora        TIME (250)    NOT NULL DEFAULT (''), ");
-        sql.append("        facilitador VARCHAR (250) NOT NULL DEFAULT (''), ");
-        sql.append("        descricao   VARCHAR (250) NOT NULL DEFAULT ('') ) ");
+        sql.append("CREATE TABLE IF NOT EXISTS EVENTO ( ");
+        sql.append("    CODIGO   INTEGER      PRIMARY KEY AUTOINCREMENT NOT NULL, ");
+        sql.append("    TITULO     VARCHAR(250) NOT NULL DEFAULT(''), ");
+        sql.append("    DIA VARCHAR(250) NOT NULL DEFAULT(''), ");
+        sql.append("    HORA    VARCHAR(200) NOT NULL DEFAULT(''), ");
+        sql.append("    FACILITADOR    VARCHAR(200) NOT NULL DEFAULT(''), ");
+        sql.append("    DESCRICAO VARCHAR(20)  NOT NULL DEFAULT('') ) ");
 
         return sql.toString();
     }

@@ -26,6 +26,8 @@ public class DetalhesParticipanteActivity extends AppCompatActivity {
     private static EventosInscreverAdapter eventosInscreverAdapter;
     private static EventosInscritosAdapter eventosInscritosAdapter;
 
+    Participante participante;
+
 
 
     @Override
@@ -46,12 +48,12 @@ public class DetalhesParticipanteActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(DetalhesParticipanteActivity.this, CadastroParticipanteActivity.class);
-                String nome = txt_nome.getText().toString();
-                String email = txt_email.getText().toString();
-                String cpf = txt_cpf.getText().toString();
-                intent.putExtra("NOVO_NOME", nome);
-                intent.putExtra("NOVO_EMAIL", email);
-                intent.putExtra("NOVO_CPF", cpf);
+                //String nome = txt_nome.getText().toString();
+                //String email = txt_email.getText().toString();
+               // String cpf = txt_cpf.getText().toString();
+                //intent.putExtra("NOVO_NOME", nome);
+                //intent.putExtra("NOVO_EMAIL", email);
+                //intent.putExtra("NOVO_CPF", cpf);
                 intent.putExtra("REQUEST_PARTICIPANTE_OU_ALTERA", MainActivity.REQUEST_ALTERA_DADOS_PARTICIPANTE);
                 startActivityForResult(intent,MainActivity.REQUEST_ALTERA_DADOS_PARTICIPANTE);
             }
@@ -78,16 +80,16 @@ public class DetalhesParticipanteActivity extends AppCompatActivity {
 
         switch(requestCode){
             case MainActivity.REQUEST_ALTERA_DADOS_PARTICIPANTE:
-                String nome = resultado.getString("nome_participante");
-                String email = resultado.getString("email_participante");
-                String cpf = resultado.getString("cpf_participante");
+                //String nome = resultado.getString("nome_participante");
+                //String email = resultado.getString("email_participante");
+                //String cpf = resultado.getString("cpf_participante");
 
-                int posicao = resultado.getInt("POSICAO_PARTICIPANTE");
-                MainActivity.alteraDadosParticipante(posicao,nome, email, cpf);
+               // int posicao = resultado.getInt("POSICAO_PARTICIPANTE");
+                //MainActivity.alteraDadosParticipante(posicao,nome, email, cpf);
 
-                txt_nome.setText(nome);
-                txt_email.setText(email);
-                txt_cpf.setText(cpf);
+               // txt_nome.setText(nome);
+                //txt_email.setText(email);
+                //txt_cpf.setText(cpf);
                 Toast.makeText(getApplicationContext(), "Dados alterados.", Toast.LENGTH_SHORT).show();
                 break;
 
@@ -104,9 +106,11 @@ public class DetalhesParticipanteActivity extends AppCompatActivity {
                     break;
         }
     }
+
+
     private void verificaParametro(){
         Bundle bundle = getIntent().getExtras();
-        Participante participante = new Participante();
+        participante = new Participante();
         if(bundle!=null && bundle.containsKey("PARTICIPANTE")){
 
             participante = (Participante)bundle.getSerializable("PARTICIPANTE");
@@ -115,4 +119,5 @@ public class DetalhesParticipanteActivity extends AppCompatActivity {
             txt_cpf.setText(participante.getCpf());
         }
     }
+
 }

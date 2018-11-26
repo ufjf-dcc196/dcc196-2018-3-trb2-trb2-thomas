@@ -16,13 +16,13 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import br.ufjf.dcc196.dcc196_trb1.Database.DadosOpenHelper;
 import br.ufjf.dcc196.dcc196_trb1.Dominio.Entidades.Evento;
 import br.ufjf.dcc196.dcc196_trb1.Dominio.Entidades.Participante;
-import br.ufjf.dcc196.dcc196_trb1.Dominio.Repositorio.EventoRepositorio;
-import br.ufjf.dcc196.dcc196_trb1.Dominio.Repositorio.ParticipanteRepositorio;
+import br.ufjf.dcc196.dcc196_trb1.Dominio.Repositorio.EventoContract;
+import br.ufjf.dcc196.dcc196_trb1.Dominio.Repositorio.ParticipanteContract;
+
 
 public class MainActivity extends AppCompatActivity {
     public static final int REQUEST_PARTICIPANTE = 1;
@@ -34,10 +34,9 @@ public class MainActivity extends AppCompatActivity {
     public static final int REQUEST_PARTICIPANTES_INSCRITOS= 7;
 
 
+    //CONEXOES E BANCO DE DADOS
     private SQLiteDatabase connection;
     private DadosOpenHelper dadosOpenHelper;
-    private ParticipanteRepositorio participanteRepositorio;
-    private EventoRepositorio eventoRepositorio;
 
     private Button btn_cadastro_participante;
     private Button btn_cadastro_evento;
@@ -60,6 +59,12 @@ public class MainActivity extends AppCompatActivity {
         rclParticipantes = (RecyclerView) findViewById(R.id.rclview_lista_participante);
         rclEventos = (RecyclerView) findViewById(R.id.rclview_lista_evento);
         layoutActivityMain = (ConstraintLayout) findViewById(R.id.layoutActivityMain);
+
+        connection = new DadosOpenHelper(MainActivity.this).getWritableDatabase();
+
+        //criarConexao();
+        //listaParticipantesBD();
+        //listaEventosBD();
 
         btn_cadastro_participante.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,22 +91,17 @@ public class MainActivity extends AppCompatActivity {
         //CONFIGURAÇÃO DO RECYCLERVIEW PARTICIPANTES ACTIVITY MAIN//
         LinearLayoutManager linearLayoutManagerParticipante = new LinearLayoutManager(this);
         rclParticipantes.setLayoutManager(linearLayoutManagerParticipante);
-        participanteRepositorio = new ParticipanteRepositorio(connection);
-        List<Participante> dadosParticipantes = participanteRepositorio.buscarTodos();
-        participanteAdapter = new ParticipanteAdapter(dadosParticipantes);
+        participanteAdapter = new ParticipanteAdapter(ParticipanteContract.getParticipanteCursor(connection,null,null));
         rclParticipantes.setAdapter(participanteAdapter);
         //CONFIGURAÇÃO DO RECYCLERVIEW PARTICIPANTES ACTIVITY MAIN//
 
         //CONFIGURAÇÃO DO RECYCLERVIEW EVENTOS ACTIVITY MAIN//
         LinearLayoutManager linearLayoutManagerEvento = new LinearLayoutManager(this);
         rclEventos.setLayoutManager(linearLayoutManagerEvento);
-        List<Evento> dadosEventos = eventoRepositorio.buscarTodos();
-        eventoAdapter = new EventoAdapter(dadosEventos);
+        //eventoAdapter = new EventoAdapter(EventoContract.getEventoCursor(connection,null,null));
         rclEventos.setAdapter(eventoAdapter);
         //CONFIGURAÇÃO DO RECYCLERVIEW EVENTOS ACTIVITY MAIN//
-        criarConexao();
-        listaParticipantesBD();
-        listaEventosBD();
+
     }
 
     @Override
@@ -112,30 +112,30 @@ public class MainActivity extends AppCompatActivity {
 
             Bundle resultado = data.getExtras();
 
-            if (resultado.isEmpty()) {
-                return;
-            }
+            //if (resultado.isEmpty()) {
+            //    return;
+            //}
 
             switch (requestCode) {
                 case MainActivity.REQUEST_PARTICIPANTE:
-                    //String nome = resultado.getString("nome_participante");
-                    //String email = resultado.getString("email_participante");
-                    //String cpf = resultado.getString("cpf_participante");
+                    String nome = resultado.getString("nome_participante");
+                    String email = resultado.getString("email_participante");
+                    String cpf = resultado.getString("cpf_participante");
 
-                    //Participante participante = new Participante(nome, email, cpf);
-                    //participantesList.add(participante);
+                    ParticipanteContract.insere(connection, cpf, email, nome);
                     Toast.makeText(getApplicationContext(), "Participante Criado", Toast.LENGTH_SHORT).show();
                     participanteAdapter.notifyDataSetChanged();
                     break;
                 case MainActivity.REQUEST_EVENTO:
-                    //String titulo = resultado.getString("titulo_evento");
-                    //String dia = resultado.getString("dia_evento");
-                    //String hora = resultado.getString("hora_evento");
-                   // String facilitador = resultado.getString("facilitador_evento");
-                    //String descricao = resultado.getString("descricao_evento");
+                    String titulo = resultado.getString("titulo_evento");
+                    String dia = resultado.getString("dia_evento");
+                    String hora = resultado.getString("hora_evento");
+                    String facilitador = resultado.getString("facilitador_evento");
+                    String descricao = resultado.getString("descricao_evento");
 
                     //Evento evento = new Evento(titulo, dia, hora, facilitador, descricao);
                     //eventosList.add(evento);
+                    EventoContract.inserir(connection, titulo, dia, hora, facilitador, descricao);
                     Toast.makeText(getApplicationContext(), "Evento Criado", Toast.LENGTH_SHORT).show();
                     eventoAdapter.notifyDataSetChanged();
                     break;
@@ -160,22 +160,6 @@ public class MainActivity extends AppCompatActivity {
             dlg.setNeutralButton(R.string.action_ok, null);
             dlg.show();
         }
-    }
-
-    public void listaParticipantesBD() {
-        participantesList.add(new Participante("Aluno1", "aluno1@hotmail.com", "11111111111"));
-        participantesList.add(new Participante("Aluno2", "aluno2@hotmail.com", "22222222222"));
-        participantesList.add(new Participante("Aluno3", "aluno3@hotmail.com", "33333333333"));
-        participantesList.add(new Participante("Aluno4", "aluno4@hotmail.com", "44444444444"));
-        participantesList.add(new Participante("Aluno5", "aluno5@hotmail.com", "55555555555"));
-    }
-
-    public void listaEventosBD() {
-        eventosList.add((new Evento("Evento1", "Dia 1", "01:00", "Professor1", "Workshop1")));
-        eventosList.add((new Evento("Evento2", "Dia 2", "02:00", "Professor2", "Workshop2")));
-        eventosList.add((new Evento("Evento3", "Dia 3", "03:00", "Professor3", "Workshop3")));
-        eventosList.add((new Evento("Evento4", "Dia 4", "04:00", "Professor4", "Workshop4")));
-        eventosList.add((new Evento("Evento5", "Dia 5", "05:00", "Professor5", "Workshop5")));
     }
 
     public static void alteraDadosParticipante(int posicao, String nome, String email, String cpf){

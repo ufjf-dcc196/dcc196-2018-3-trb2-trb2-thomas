@@ -12,7 +12,6 @@ import android.widget.EditText;
 
 import br.ufjf.dcc196.dcc196_trb1.Database.DadosOpenHelper;
 import br.ufjf.dcc196.dcc196_trb1.Dominio.Entidades.Evento;
-import br.ufjf.dcc196.dcc196_trb1.Dominio.Repositorio.EventoRepositorio;
 
 
 public class CadastroEventoActivity extends AppCompatActivity {
@@ -25,7 +24,7 @@ public class CadastroEventoActivity extends AppCompatActivity {
     private Button btn_confirmar;
 
     //MODIFICAR NO FUTURO//
-    private EventoRepositorio eventoRepositorio;
+
     private SQLiteDatabase connection;
     private DadosOpenHelper dadosOpenHelper;
     private ConstraintLayout layoutContentActivityCadEvento;
